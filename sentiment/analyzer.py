@@ -4,13 +4,14 @@ import math
 
 # NLTK VADER
 import nltk
+nltk.data.path.append("/Users/prachi/nltk_data")
 from nltk.sentiment import SentimentIntensityAnalyzer
 
 # Ensure required data is downloaded
 try:
     _ = nltk.data.find("sentiment/vader_lexicon.zip")
 except LookupError:
-    nltk.download("vader_lexicon")
+    nltk.download("vader_lexicon", quiet=True)
 
 sia = SentimentIntensityAnalyzer()
 
