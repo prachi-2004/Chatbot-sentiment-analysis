@@ -1,0 +1,181 @@
+{
+  "conversation": [
+    {
+      "timestamp": "2025-12-08T01:08:45.696052",
+      "speaker": "user",
+      "text": "i am stressed today",
+      "sentiment": {
+        "text": "i am stressed today",
+        "compound": -0.34,
+        "neg": 0.545,
+        "neu": 0.455,
+        "pos": 0.0,
+        "label": "Negative"
+      }
+    },
+    {
+      "timestamp": "2025-12-08T01:08:45.696277",
+      "speaker": "bot",
+      "text": "I hear you're stressed. Sometimes taking a short break can help.",
+      "sentiment": null
+    },
+    {
+      "timestamp": "2025-12-08T01:09:19.667014",
+      "speaker": "user",
+      "text": "feeling sad",
+      "sentiment": {
+        "text": "feeling sad",
+        "compound": -0.3818,
+        "neg": 0.674,
+        "neu": 0.0,
+        "pos": 0.326,
+        "label": "Negative"
+      }
+    },
+    {
+      "timestamp": "2025-12-08T01:09:19.667034",
+      "speaker": "bot",
+      "text": "I see. What else is on your mind?",
+      "sentiment": null
+    },
+    {
+      "timestamp": "2025-12-08T01:09:53.967501",
+      "speaker": "user",
+      "text": "actually i think i am improving",
+      "sentiment": {
+        "text": "actually i think i am improving",
+        "compound": 0.4215,
+        "neg": 0.0,
+        "neu": 0.517,
+        "pos": 0.483,
+        "label": "Positive"
+      }
+    },
+    {
+      "timestamp": "2025-12-08T01:09:53.967521",
+      "speaker": "bot",
+      "text": "Celebrate the small wins! You're moving in the right direction. 💪",
+      "sentiment": null
+    },
+    {
+      "timestamp": "2025-12-08T01:10:10.778292",
+      "speaker": "user",
+      "text": "i am feeling fine",
+      "sentiment": {
+        "text": "i am feeling fine",
+        "compound": 0.3182,
+        "neg": 0.0,
+        "neu": 0.233,
+        "pos": 0.767,
+        "label": "Positive"
+      }
+    },
+    {
+      "timestamp": "2025-12-08T01:10:10.778315",
+      "speaker": "bot",
+      "text": "That's excellent! 🌈",
+      "sentiment": null
+    },
+    {
+      "timestamp": "2025-12-08T01:10:18.614145",
+      "speaker": "user",
+      "text": "i am feeling ok",
+      "sentiment": {
+        "text": "i am feeling ok",
+        "compound": 0.4019,
+        "neg": 0.0,
+        "neu": 0.213,
+        "pos": 0.787,
+        "label": "Positive"
+      }
+    },
+    {
+      "timestamp": "2025-12-08T01:10:18.614166",
+      "speaker": "bot",
+      "text": "That's excellent! 🌈",
+      "sentiment": null
+    }
+  ],
+  "summary": {
+    "duration_seconds": 319.034916,
+    "total_messages": 10,
+    "user_messages": 5,
+    "bot_messages": 5,
+    "overall_sentiment": {
+      "compound": 0.1357111111111111,
+      "label": "Positive",
+      "details": [
+        {
+          "text": "i am stressed today",
+          "compound": -0.34,
+          "label": "Negative",
+          "weight": 2
+        },
+        {
+          "text": "feeling sad",
+          "compound": -0.3818,
+          "label": "Negative",
+          "weight": 1
+        },
+        {
+          "text": "actually i think i am improving",
+          "compound": 0.4215,
+          "label": "Positive",
+          "weight": 2
+        },
+        {
+          "text": "i am feeling fine",
+          "compound": 0.3182,
+          "label": "Positive",
+          "weight": 2
+        },
+        {
+          "text": "i am feeling ok",
+          "compound": 0.4019,
+          "label": "Positive",
+          "weight": 2
+        }
+      ],
+      "message_count": 5,
+      "weighted_average": true
+    },
+    "sentiment_distribution": {
+      "Positive": 3,
+      "Negative": 2,
+      "Neutral": 0
+    },
+    "trend_data": [
+      [
+        0,
+        "Negative",
+        -0.34
+      ],
+      [
+        1,
+        "Negative",
+        -0.3609
+      ],
+      [
+        2,
+        "Neutral",
+        0.019850000000000007
+      ],
+      [
+        3,
+        "Positive",
+        0.36985
+      ],
+      [
+        4,
+        "Positive",
+        0.36005
+      ]
+    ],
+    "start_time": "2025-12-08T01:07:49.370504",
+    "end_time": "2025-12-08T01:13:08.405441"
+  },
+  "metadata": {
+    "bot_name": "LiaBot",
+    "export_time": "2025-12-08T01:13:08.405447"
+  }
+}
