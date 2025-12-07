@@ -1,133 +1,222 @@
-# Chatbot-sentiment-analysis
-A chatbot that conducts a conversation with a user and performs sentiment analysis.
+# **Chatbot with Sentiment Analysis**
+*A Python-based chatbot that conducts conversations with users and performs real-time sentiment analysis.*
 
-# Chatbot with Sentiment Analysis (Tier 1 + Tier 2)
+## 📋 **Project Overview**
+This project implements a conversational chatbot with comprehensive sentiment analysis capabilities. The system maintains complete conversation history and analyzes emotional tone at both individual statement and overall conversation levels.
 
-## 🚀 Project Overview
-This project implements a simple conversational chatbot with sentiment analysis.
+### **Implementation Status**
+| Requirement | Status | Description |
+|------------|--------|-------------|
+| **Tier 1** | ✅ **Fully Implemented** | Conversation-level sentiment analysis with clear emotional direction |
+| **Tier 2** | ✅ **Fully Implemented** | Statement-level analysis for every user message with mood trend detection |
 
-The chatbot:
-- Maintains full conversation history  
-- Performs sentiment analysis on each user message (**Tier 2**)  
-- Computes overall conversation sentiment (**Tier 1**)  
-- Summarizes mood trends across the conversation
+## 🚀 **How to Run**
 
-✔ Tier 1 — Implemented  
-✔ Tier 2 — Implemented  
+### **Prerequisites**
+- Python 3.7 or higher
+- pip (Python package manager)
 
----
+### **Installation Steps**
 
-## 🧰 How to Run the Project
-
-### 1. Clone or download the project
+1. **Clone or download the project:**
 ```bash
 git clone <your-repository-url>
 cd chatbot-sentiment
-2. Create and activate a virtual environment
-Windows:
+```
 
-bash
-Copy code
+2. **Create and activate virtual environment:**
+```bash
+# Windows
 python -m venv venv
 venv\Scripts\activate
-Mac/Linux:
 
-bash
-Copy code
+# Mac/Linux
 python3 -m venv venv
 source venv/bin/activate
-3. Install required dependencies
-bash
-Copy code
+```
+
+3. **Install dependencies:**
+```bash
 pip install -r requirements.txt
-4. Run the chatbot
-bash
-Copy code
+```
+
+4. **Download NLTK data (first run only):**
+```bash
+python -c "import nltk; nltk.download('vader_lexicon')"
+```
+
+5. **Run the chatbot:**
+```bash
 python main.py
-Type exit or quit anytime to end the chat and see the sentiment summary.
+```
 
-📦 Packages / Libraries Used
-Library	Purpose
-NLTK (VADER)	Sentiment analysis of messages
-pytest	Optional testing
-Python Standard Libraries	I/O handling, modular logic
+6. **Type `exit`, `quit`, or `bye` anytime to end the chat and see the sentiment summary.**
 
-VADER is chosen because it performs well on conversational text and detects sentiment in short sentences, slang, punctuation, and emojis.
+## 🛠 **Chosen Technologies**
 
-🧠 Sentiment Analysis Method
-🔹 1. Statement-Level Sentiment (Tier 2)
-Each user message is analyzed using VADER:
+| Technology | Purpose | Version |
+|------------|---------|---------|
+| **Python** | Core programming language | 3.7+ |
+| **NLTK VADER** | Sentiment analysis engine | 3.8.1 |
+| **Colorama** | Colored terminal output | 0.4.6 |
+| **pytest** | Testing framework (optional) | 7.4.3 |
+| **JSON** | Conversation persistence | Built-in |
 
-It outputs:
+### **Why VADER?**
+- **Optimized for conversational text**: Handles slang, emoticons, and informal language
+- **Rule-based**: No training data required
+- **Context-aware**: Considers punctuation, capitalization, and degree modifiers
+- **Fast and lightweight**: Real-time analysis without heavy computational requirements
 
-pos (positive score)
 
-neg (negative score)
+## ✅ **Tier 2 Implementation Status**
 
-neu (neutral score)
+### **Fully Implemented Features:**
 
-compound (overall score from -1 to +1)
+| Feature | Status | Details |
+|---------|--------|---------|
+| **Per-message analysis** | ✅ Complete | Every user message analyzed individually |
+| **Real-time display** | ✅ Complete | Sentiment shown immediately after each message |
+| **Detailed scoring** | ✅ Complete | Compound score + individual emotion scores |
+| **Trend visualization** | ✅ Complete | Moving window analysis with shift detection |
+| **Context-aware responses** | ✅ Complete | Bot responses vary based on detected sentiment |
 
-Message is labeled using:
+### **Enhanced Tier 2 Features:**
+1. **Multiple response templates**: Different responses for positive, negative, and neutral sentiments
+2. **Context detection**: Identifies specific topics (stress, improvement, gratitude)
+3. **Short message handling**: Special logic for "yes", "no", and other brief responses
+4. **Conversation memory**: References previous messages for coherent responses
 
-Positive → compound ≥ 0.05
+## 🧪 **Testing**
 
-Negative → compound ≤ -0.05
+### **Test Suite Structure**
+```
+tests/
+└── test_sentiment.py
+    ├── Unit Tests: Individual function testing
+    ├── Integration Tests: Complete workflow testing  
+    └── Edge Cases: Empty strings, boundary conditions
+```
 
-Neutral → otherwise
+### **Running Tests**
+```bash
+# Run all tests
+python -m pytest tests/ -v
 
-These sentiment labels are shown after conversation ends.
+# Run specific test file
+python tests/test_sentiment.py
 
-🔹 2. Conversation-Level Sentiment (Tier 1)
-At the end of the chat:
+# Example output:
+# test_analyze_statement_positive PASSED
+# test_analyze_statement_negative PASSED
+# test_conversation_level_sentiment PASSED
+# ✅ All tests passed!
+```
 
-Each message’s sentiment is calculated
+## 📁 **Project Structure**
 
-A length-weighted average of compound scores is computed
-
-The final sentiment label is assigned
-
-Example:
-
-yaml
-Copy code
-Overall sentiment: Negative (compound = -0.41)
-🔹 3. Mood Trend (Optional Enhancement)
-A moving average sentiment window (size = 2) is used to detect:
-
-mood improvements
-
-mood decline
-
-mood shifts over time
-
-Example:
-
-mathematica
-Copy code
-Message 1 → Positive
-Message 2 → Neutral
-Mood shift detected: Positive → Neutral
-🏆 Tier 2 Implementation Status
-Tier 2 is fully implemented.
-Per-message sentiment analysis + mood trend graphs are provided in the summary.
-
-🧪 Running Tests
-To run unit tests:
-
-bash
-Copy code
-pytest -q
-📁 Project Structure
-css
-Copy code
+```
 chatbot-sentiment/
-├── main.py
-├── README.md
-├── requirements.txt
+├── main.py                 # Entry point - launches the chatbot
+├── requirements.txt        # Python dependencies
+├── README.md              # This documentation
 ├── chatbot/
-│   └── cli_bot.py
+│   └── cli_bot.py         # Chatbot logic, CLI interface, response generation
 ├── sentiment/
-│   └── analyzer.py
+│   └── analyzer.py        # Core sentiment analysis functions
 └── tests/
-    └── test_sentiment.py
+    └── test_sentiment.py  # Comprehensive test suite
+```
+## 💬 **Example Conversations**
+
+### **Example : Complete Conversation with Analysis**
+```
+You: I had a terrible morning
+→ Sentiment: Negative 😔 (score: -0.612)
+LiaBot: That sounds tough. I'm here to listen.
+
+You: But lunch with friends helped
+→ Sentiment: Positive 😊 (score: 0.445)  
+LiaBot: That's wonderful to hear! 😊 What made it so good?
+
+You: I'm feeling much better now
+→ Sentiment: Positive 😊 (score: 0.521)
+LiaBot: Awesome! Keep riding that positive wave!
+
+Type 'quit':
+
+📊 CONVERSATION SUMMARY:
+- Statement-level analysis: 3 messages with individual sentiment scores
+- Overall sentiment: Positive (compound: 0.118)
+- Mood trend: Negative → Positive (shift at message 2)
+- Distribution: Positive 67%, Negative 33%
+```
+
+### **Available Commands During Chat:**
+- `summary` – Show conversation analysis
+- `save` – Save conversation to JSON file  
+- `clear` – Clear conversation history
+- `help` – Show available commands
+- `exit`/`quit`/`bye` – End conversation
+
+## ✨ **Innovations & Additional Features**
+
+### **1. Enhanced User Experience**
+- **Color-coded interface**: Visual sentiment indicators (green/red/yellow)
+- **Emoji feedback**: Quick emotional recognition
+- **Progress bars**: ASCII visualization of sentiment distribution
+- **Real-time feedback**: Immediate sentiment display after each message
+
+### **2. Production-Ready Features**
+- **Conversation persistence**: Auto-save to JSON with full metadata
+- **Error handling**: Graceful degradation with user-friendly messages
+- **Modular architecture**: Separated concerns for maintainability
+- **Configurable thresholds**: Easy adjustment of sentiment boundaries
+
+### **3. Advanced Analytics**
+- **Weighted averaging**: Message length considered in overall sentiment
+- **Statistical breakdown**: Percentages, averages, standard deviation
+- **Trend visualization**: Clear display of mood progression
+- **Export capabilities**: JSON format for further analysis
+
+### **4. Context-Aware Responses**
+- **Multiple templates**: Different responses for each sentiment category
+- **Keyword detection**: Identifies specific contexts (stress, improvement)
+- **Conversation memory**: References previous messages
+- **Appropriate follow-ups**: Asks relevant questions based on sentiment
+
+## 📄 **Output Files**
+Conversations are automatically saved to `conversation.json` when you type `save` or end the chat. The file includes:
+- Full conversation history with timestamps
+- Sentiment analysis for each user message
+- Overall conversation statistics
+- Metadata (duration, message counts, export time)
+
+## 🔧 **Troubleshooting**
+
+### **Common Issues:**
+1. **NLTK data not found**: Run `python -c "import nltk; nltk.download('vader_lexicon')"`
+2. **Import errors**: Ensure virtual environment is activated
+3. **Color issues**: Install colorama with `pip install colorama`
+
+### **Testing Your Installation:**
+```bash
+# Test Python environment
+python --version
+
+# Test NLTK installation
+python -c "import nltk; print('NLTK version:', nltk.__version__)"
+
+# Test sentiment analyzer
+python -c "from sentiment.analyzer import analyze_statement; print(analyze_statement('I love this!'))"
+```
+
+## 📚 **References**
+- **VADER Sentiment Analysis**: [NLTK Documentation](https://www.nltk.org/howto/sentiment.html)
+- **Python NLTK**: [Official Website](https://www.nltk.org/)
+- **Colorama**: [GitHub Repository](https://github.com/tartley/colorama)
+
+## 📄 **License**
+This project was developed as part of the LiaPlus Assignment for educational purposes.
+
+---
