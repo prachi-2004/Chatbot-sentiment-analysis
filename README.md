@@ -21,7 +21,7 @@ This project implements a conversational chatbot with comprehensive sentiment an
 1. **Clone or download the project:**
 ```bash
 git clone <(https://github.com/prachi-2004/Chatbot-sentiment-analysis.git)>
-cd chatbot-sentiment
+cd chatbot-sentiment-analysis
 ```
 
 2. **Create and activate virtual environment:**
