@@ -20,8 +20,8 @@ This project implements a conversational chatbot with comprehensive sentiment an
 
 1. **Clone or download the project:**
 ```bash
-git clone <(https://github.com/prachi-2004/Chatbot-sentiment-analysis.git)>
-cd chatbot-sentiment-analysis
+git clone <your-repository-url>
+cd chatbot-sentiment
 ```
 
 2. **Create and activate virtual environment:**
@@ -68,11 +68,12 @@ python main.py
 - **Context-aware**: Considers punctuation, capitalization, and degree modifiers
 - **Fast and lightweight**: Real-time analysis without heavy computational requirements
 
-🧠 Sentiment Analysis Logic
-1. Statement-Level Analysis (Tier 2)
+## 🧠 **Sentiment Analysis Logic**
+
+### **1. Statement-Level Analysis (Tier 2)**
 Each user message is analyzed in real-time using VADER sentiment analyzer:
 
-python
+```python
 # For each user message:
 scores = {
     "compound": -0.542,  # Overall score (-1 to +1)
@@ -81,37 +82,46 @@ scores = {
     "pos": 0.000,        # Positive sentiment proportion
     "label": "Negative"   # Sentiment classification
 }
-Classification thresholds:
+```
 
-Positive → compound ≥ 0.05
+**Classification thresholds:**
+- **Positive** → `compound ≥ 0.05`
+- **Negative** → `compound ≤ -0.05`  
+- **Neutral** → All other values
 
-Negative → compound ≤ -0.05
-
-Neutral → All other values
-
-Real-time display:
-
-text
+**Real-time display:**
+```
 You: "I'm feeling stressed today"
 → Sentiment: Negative 😔 (score: -0.421)
-2. Conversation-Level Analysis (Tier 1)
-At conversation end, overall sentiment is calculated using weighted averaging:
+```
 
-python
+### **2. Conversation-Level Analysis (Tier 1)**
+At conversation end, overall sentiment is calculated using **weighted averaging**:
+
+```python
 # Weighted by message length to reduce bias
 overall_compound = Σ(message_compound × word_count^0.5) / Σ(word_count^0.5)
-Output format:
+```
 
-text
+**Output format:**
+```
 Overall conversation sentiment: Positive (compound: 0.122)
-3. Mood Trend Analysis (Enhanced Feature)
+```
+
+### **3. Mood Trend Analysis (Enhanced Feature)**
 Tracks emotional progression throughout the conversation:
 
-Moving window analysis (default: window size = 2)
+- **Moving window analysis** (default: window size = 2)
+- **Shift detection**: Identifies exact points where mood changes
+- **Visual trend representation**: ASCII bars show sentiment distribution
 
-Shift detection: Identifies exact points where mood changes
+**Example output:**
+```
+📉 Mood Trend Analysis:
+Detected mood shifts:
+ - At message 3: Negative → Positive
+```
 
-Visual trend representation: ASCII bars show sentiment distribution
 ## ✅ **Tier 2 Implementation Status**
 
 ### **Fully Implemented Features:**
@@ -170,9 +180,30 @@ chatbot-sentiment/
 └── tests/
     └── test_sentiment.py  # Comprehensive test suite
 ```
+
+### **Module Responsibilities:**
+- **`main.py`**: Application entry point and error handling
+- **`chatbot/cli_bot.py`**: Manages conversation flow, user interaction, and response logic
+- **`sentiment/analyzer.py`**: Pure sentiment analysis functions (reusable, testable)
+- **`tests/test_sentiment.py`**: Unit and integration tests
+
 ## 💬 **Example Conversations**
 
-### **Example : Complete Conversation with Analysis**
+### **Example 1: Basic Sentiment Analysis**
+```
+You: "Your service disappoints me"
+→ Sentiment: Negative 😔 (score: -0.421)
+LiaBot: "I'm sorry to hear that. 😔 Want to talk about it?"
+
+You: "Last experience was better"
+→ Sentiment: Positive 😊 (score: 0.334)
+LiaBot: "That's great to hear! 🌟 Tell me more!"
+
+Type 'summary':
+Overall conversation sentiment: Negative – general dissatisfaction
+```
+
+### **Example 2: Complete Conversation with Analysis**
 ```
 You: I had a terrible morning
 → Sentiment: Negative 😔 (score: -0.612)
@@ -263,3 +294,5 @@ python -c "from sentiment.analyzer import analyze_statement; print(analyze_state
 This project was developed as part of the LiaPlus Assignment for educational purposes.
 
 ---
+
+**Ready to chat?** Run `python main.py` and start your conversation with sentiment-aware LiaBot!
