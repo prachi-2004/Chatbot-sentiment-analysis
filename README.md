@@ -68,7 +68,50 @@ python main.py
 - **Context-aware**: Considers punctuation, capitalization, and degree modifiers
 - **Fast and lightweight**: Real-time analysis without heavy computational requirements
 
+🧠 Sentiment Analysis Logic
+1. Statement-Level Analysis (Tier 2)
+Each user message is analyzed in real-time using VADER sentiment analyzer:
 
+python
+# For each user message:
+scores = {
+    "compound": -0.542,  # Overall score (-1 to +1)
+    "neg": 0.623,        # Negative sentiment proportion
+    "neu": 0.377,        # Neutral sentiment proportion  
+    "pos": 0.000,        # Positive sentiment proportion
+    "label": "Negative"   # Sentiment classification
+}
+Classification thresholds:
+
+Positive → compound ≥ 0.05
+
+Negative → compound ≤ -0.05
+
+Neutral → All other values
+
+Real-time display:
+
+text
+You: "I'm feeling stressed today"
+→ Sentiment: Negative 😔 (score: -0.421)
+2. Conversation-Level Analysis (Tier 1)
+At conversation end, overall sentiment is calculated using weighted averaging:
+
+python
+# Weighted by message length to reduce bias
+overall_compound = Σ(message_compound × word_count^0.5) / Σ(word_count^0.5)
+Output format:
+
+text
+Overall conversation sentiment: Positive (compound: 0.122)
+3. Mood Trend Analysis (Enhanced Feature)
+Tracks emotional progression throughout the conversation:
+
+Moving window analysis (default: window size = 2)
+
+Shift detection: Identifies exact points where mood changes
+
+Visual trend representation: ASCII bars show sentiment distribution
 ## ✅ **Tier 2 Implementation Status**
 
 ### **Fully Implemented Features:**
